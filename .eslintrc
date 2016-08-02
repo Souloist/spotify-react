@@ -1,3 +1,8 @@
 {
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "rules": {
+        "quotes": 0,
+        "indent": 0,
+        "react/jsx-indent": 0
+    }
 }

@@ -27,7 +27,17 @@ module.exports = {
     "devServer": {
         "contentBase": PATHS.dist
     },
+    "eslint": {
+        "emitWarning": true
+    },
     "module": {
+        "preLoaders": [
+            {
+                "test": /\.js$/,
+                "loaders": ["eslint-loader"],
+                "exclude": /node_modules/
+            }
+        ],
         "loaders": [
             {
                 "test": /\.html$/,
