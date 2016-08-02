@@ -10,6 +10,10 @@ var plugins = []
 
 plugins.push(new webpack.HotModuleReplacementPlugin());
 
+var loaders = []
+
+loaders.push("babel-loader")
+
 module.exports = {
     "entry": {
         "javascript": PATHS.app
@@ -22,5 +26,18 @@ module.exports = {
     "plugins": plugins,
     "devServer": {
         "contentBase": PATHS.dist
+    },
+    "module": {
+        "loaders": [
+            {
+                "test": /\.html$/,
+                "loader": "file?name=[name].[ext]"
+            },
+            {
+                "test": /\.js$/,
+                "exclude": /node_modules/,
+                "loaders": loaders
+            }
+        ]
     }
 };
