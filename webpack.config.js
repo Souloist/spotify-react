@@ -19,7 +19,7 @@ module.exports = {
         "publicPath": "/",
         "filename": "bundle.js"
     },
-    plugins: plugins,
+    "plugins": plugins,
     "devServer": {
         "contentBase": PATHS.dist
     }
