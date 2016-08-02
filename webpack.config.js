@@ -2,7 +2,7 @@ var webpack = require("webpack");
 var path = require("path");
 
 var PATHS = {
-    "app": "./src/App.js",
+    "app": "./src/jsx/App.jsx",
     "dist": path.join(__dirname, "build")
 };
 
@@ -33,7 +33,7 @@ module.exports = {
     "module": {
         "preLoaders": [
             {
-                "test": /\.js$/,
+                "test": /\.(js|jsx)$/,
                 "loaders": ["eslint-loader"],
                 "exclude": /node_modules/
             }
@@ -44,10 +44,13 @@ module.exports = {
                 "loader": "file?name=[name].[ext]"
             },
             {
-                "test": /\.js$/,
+                "test": /\.(js|jsx)$/,
                 "exclude": /node_modules/,
                 "loaders": loaders
             }
         ]
+    },
+    "resolve": {
+        "extensions": ["", ".js", ".jsx"]
     }
 };
