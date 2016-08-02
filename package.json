@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/Souloist/spotify-react/issues"
   },
-  "homepage": "https://github.com/Souloist/spotify-react#readme"
+  "homepage": "https://github.com/Souloist/spotify-react#readme",
+  "devDependencies": {
+    "webpack": "^1.13.1"
+  },
+  "scripts": {
+      "start": "webpack-dev-server",
+      "build": "webpack",
+      "test": "karma start"
+  }
 }

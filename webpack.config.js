@@ -6,6 +6,10 @@ var PATHS = {
     "dist": path.join(__dirname, "build")
 };
 
+var plugins = []
+
+plugins.push(new webpack.HotModuleReplacementPlugin());
+
 module.exports = {
     "entry": {
         "javascript": PATHS.app
@@ -15,6 +19,7 @@ module.exports = {
         "publicPath": "/",
         "filename": "bundle.js"
     },
+    plugins: plugins,
     "devServer": {
         "contentBase": PATHS.dist
     }
