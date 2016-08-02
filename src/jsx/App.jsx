@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import SearchBar from "./components/SearchBar";
 
-class App extends React.component {
+class App extends React.Component {
     render() {
         return (
             <div>
@@ -15,5 +15,5 @@ class App extends React.component {
 
 ReactDOM.render(
     <App />,
-    document.getElementById('container')
+    document.getElementById("container")
 );
