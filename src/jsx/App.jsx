@@ -1,13 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SearchBar from "./components/SearchBar";
+import AlbumList from "./components/AlbumList";
+import SpotifyUtils from "./utils/SpotifyUtils";
 
 class App extends React.Component {
+    constructor() {
+        super();
+        this.state = ({
+            albums: []
+        });
+        this.getAlbums = this.getAlbums.bind(this);
+        this.processAlbums = this.processAlbums.bind(this);
+    }
+
+    getAlbums(artist) {
+        SpotifyUtils.getAlbums(artist, this.processAlbums);
+    }
+
+    processAlbums(payload) {
+        this.setState({
+            album: payload.album.items,
+        });
+    }
+
     render() {
         return (
             <div>
-                <p>Hi</p>
-                <SearchBar />
+                <SearchBar getAlbums={this.getAlbums} />
+                <AlbumList albums={this.state.albums} />
             </div>
         );
     }
