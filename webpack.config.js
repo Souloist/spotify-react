@@ -10,7 +10,7 @@ var plugins = []
 
 plugins.push(new webpack.HotModuleReplacementPlugin());
 
-var loaders = []
+var loaders = ["react-hot"]
 
 loaders.push("babel-loader")
 
