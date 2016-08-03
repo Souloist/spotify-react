@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import SearchBar from "./components/SearchBar";
 import AlbumList from "./components/AlbumList";
-import * as SpotifyUtils from "./utils/SpotifyUtils";
+import { getAlbums } from "./utils/SpotifyUtils";
 
 class App extends React.Component {
     constructor() {
@@ -16,7 +16,7 @@ class App extends React.Component {
     }
 
     getAlbums(artist) {
-        SpotifyUtils.getAlbums(artist, this.processAlbums);
+        getAlbums(artist, this.processAlbums);
     }
 
     processAlbums(payload) {
