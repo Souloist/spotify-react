@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import SearchBar from "./components/SearchBar";
 import AlbumList from "./components/AlbumList";
-import SpotifyUtils from "./utils/SpotifyUtils";
+import * as SpotifyUtils from "./utils/SpotifyUtils";
 
 class App extends React.Component {
     constructor() {
         super();
         this.state = ({
-            albums: []
+            albums: [],
         });
         this.getAlbums = this.getAlbums.bind(this);
         this.processAlbums = this.processAlbums.bind(this);
@@ -20,7 +21,7 @@ class App extends React.Component {
 
     processAlbums(payload) {
         this.setState({
-            album: payload.album.items,
+            albums: payload.albums.items,
         });
     }
 

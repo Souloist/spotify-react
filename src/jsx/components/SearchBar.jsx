@@ -11,6 +11,7 @@ class SearchBar extends React.Component {
         // binding this to event handler so this will contain props
         // and setState method
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     handleInputChange(e) {
@@ -19,9 +20,19 @@ class SearchBar extends React.Component {
         });
     }
 
+    handleKeyPress(e) {
+        if (e.key === "Enter") {
+            this.props.getAlbums(this.state.searchQuery);
+        }
+    }
+
     render() {
-        return <input onChange={this.handleInputChange} />;
+        return <input onChange={this.handleInputChange} onKeyPress={this.handleKeyPress} />;
     }
 }
+
+SearchBar.propTypes = {
+    getAlbums: React.PropTypes.func.isRequired,
+};
 
 export default SearchBar;
