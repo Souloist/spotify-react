@@ -19,7 +19,6 @@ const AlbumList = (props) => {
     );
 };
 
-
 AlbumList.propTypes = {
     albums: React.PropTypes.array.isRequired,
 };

@@ -8,8 +8,8 @@ import axios from "axios";
  */
 
 export function fetch(request, callback) {
-        axios.get(request)
-            .then(response => {
-                callback(response.data);
-            });
+    axios.get(request)
+    .then(response => {
+        callback(response.data);
+    });
 }

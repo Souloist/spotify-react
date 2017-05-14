@@ -7,6 +7,7 @@ import { getAlbums } from "./utils/SpotifyUtils";
 
 class App extends React.Component {
     constructor() {
+        // Required to get access to this
         super();
         this.state = ({
             albums: [],
