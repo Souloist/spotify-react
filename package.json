@@ -4,7 +4,7 @@
   "description": "Spotify clone using React.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --hot",
     "build": "webpack",
     "test": "karma start"
   },

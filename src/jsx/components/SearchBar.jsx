@@ -31,9 +31,9 @@ class SearchBar extends React.Component {
             <div className="searchBar">
                 <h3>Search for an Artist</h3>
                 <input
-                    onChange={this.handleInputChange}
-                    onKeyPress={this.handleKeyPress}
-                    className="searchBar-input"
+                  onChange={this.handleInputChange}
+                  onKeyPress={this.handleKeyPress}
+                  className="searchBar-input"
                 />
             </div>
         );
