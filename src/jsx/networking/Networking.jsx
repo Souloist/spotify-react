@@ -7,9 +7,7 @@ import axios from "axios";
  * Axois stores the resulting payload in the response's data object
  */
 
-function fetch(request, callback) {
+export default function fetch(request, callback) {
     axios.get(request)
     .then(response => callback(response.data));
 }
-
-export default fetch;

@@ -1,59 +1,74 @@
-var webpack = require("webpack");
-var path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require("webpack");
+const path = require("path");
 
-var PATHS = {
-    "app": "./src/jsx/App.jsx",
-    "html": "/src/index.html",
-    "css": "/src/css/",
-    "dist": path.join(__dirname, "build")
+const PATHS = {
+    app: "./src/jsx/App.jsx",
+    html: "./src/index.html",
+    dist: path.resolve(__dirname, "build")
 };
 
-var loaders = [
+const loaders = [
     "react-hot-loader",
     "babel-loader",
 ];
 
-var config = {
-    "entry": {
-        "javascript": PATHS.app
+const plugins = [
+    new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true,
+    }),
+    new HtmlWebpackPlugin({
+        template: PATHS.html,
+        filename: "index.html", // path in build folder
+        inject: "body",
+    }),
+    new ExtractTextPlugin("/css/bundle.css"),
+]
+
+const config = {
+    entry: PATHS.app,
+    output: {
+        path: PATHS.dist,
+        publicPath: "/",
+        filename: "bundle.js"
     },
-    "output": {
-        "path": PATHS.dist,
-        "publicPath": "/",
-        "filename": "bundle.js"
+    devServer: {
+        open: true, // open local server in browser
+        contentBase: PATHS.dist
     },
-    "devServer": {
-        "open": true, // open local server in browser
-        "contentBase": PATHS.dist
-    },
-    "module": {
-        "rules": [
+    module: {
+        rules: [
             {
-                "enforce": "pre",
-                "test": /\.(js|jsx)$/,
-                "loader": "eslint-loader",
-                "exclude": /(node_modules)/,
-                "options": {
-                    "emitWarning": true
+                test: /\.(js|jsx)$/,
+                enforce: "pre",
+                loader: "eslint-loader",
+                exclude: /node_modules/,
+                options: {
+                    emitWarning: true
                 }
             },
+      	    {
+		test: /\.css$/,
+      		loader: ExtractTextPlugin.extract({
+        	    fallback: "style-loader",
+        	    use: "css-loader",
+      		})
+	    },
             {
-                "test": /\.html$/,
-                "loader": "file?name=[name].[ext]"
-            },
-            {
-                "test": /\.css$/,
-                "loader": "file?name=[name].[ext]"
-            },
-            {
-                "test": /\.(js|jsx)$/,
-                "exclude": /(node_modules)/,
-                "loaders": loaders
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loaders: loaders
             }
         ]
     },
-    "resolve": {
-        "extensions": [".js", ".jsx"]
+    plugins: plugins,
+    resolve: {
+        extensions: [".js", ".jsx"],
+        modules: [
+            path.resolve("./src/jsx"),
+            path.resolve("./node_modules"),
+        ]
     }
 };
 

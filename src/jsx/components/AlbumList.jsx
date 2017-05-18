@@ -1,10 +1,11 @@
 import React from "react";
 
 const AlbumList = (props) => {
-    const albums = props.albums.map(album =>
+    const albums = props.albums.map(album => (
         <li>
             <img src={album.images[1].url} alt={album.name} />
-        </li>);
+        </li>
+    ));
 
     return (
         <ul>
